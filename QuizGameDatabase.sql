@@ -60,7 +60,7 @@ insert into Category (category_name)values
 ('Geografia'),
 ('Fizyka i Chemia'),
 ('Matematyka'),
-('Jêzyk Angielski'),
+('JÃªzyk Angielski'),
 ('Bazy danych')
 
 insert into Player (Nick)values
@@ -151,7 +151,7 @@ go
 
 go
 
---procedura losuj¹ca niepowtarzaj¹ce siê pytania dla gracza
+--this procedure draws lots questions for player (they cannot be the same)
 create or alter procedure dbo.GetQuestionForPlayer
 @player_id int,
 @player_questions_quantity int -- number of questions that we want draw by lot
@@ -215,13 +215,13 @@ end
 
 ----exemplary using of procedures
 
---exec AddQuestion 1,'W którym wieku by³ chrzest polski'
+--exec AddQuestion 1,'W ktÃ³rym wieku byÂ³ chrzest polski'
 --exec AddQuestion 2,'co to jest C#'
 --exec AddQuestion 3,'Jaka jest stolica Polski'
 
 --exec AddPossibleAnswer 'Warszawa',1,1
 --exec AddPossibleAnswer 'Bruksela',0,1
---exec AddPossibleAnswer 'Kraków',0,1
+--exec AddPossibleAnswer 'KrakÃ³w',0,1
 
 --exec GetQuestionForPlayer 1,2 -- dodaje 2 pytania do gracza nr.1 
 
