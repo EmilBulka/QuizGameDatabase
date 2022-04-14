@@ -1,9 +1,7 @@
 Create database QuizGame;
 GO
 
-
 use QuizGame;
-
 
 create table Category
 (
@@ -18,9 +16,7 @@ create table Questions
 	category_id int foreign key references Category(category_id),
 	content nvarchar(100), 
 	modify_date datetime default getdate() 
-
 )
-
 
 create table Possible_Answers
 (
@@ -50,9 +46,6 @@ create table Player_Answers
 	question_id int foreign key references Questions(question_id),
 	answer_id int foreign key references Possible_Answers(answer_id)
 )
-
-select*from Category
-
 
 insert into Category (category_name)values
 ('Historia'),
@@ -99,8 +92,6 @@ end
 
 go
 
-
-
 --procedure which adds answers with correct answer and more than 3 answer is not allowed 
 
 Create or alter procedure dbo.AddPossibleAnswer 
@@ -114,17 +105,11 @@ if not exists (select answer from Possible_Answers as pa
 				where answer = @answer and q.question_id = @question_id )
 begin
 
-
-
 if exists (select question_id from Questions where question_id = @question_id)
 	begin
-
-
+	
 declare @answer_count as int
 select @answer_count = count(question_id) from Possible_Answers where question_id = @question_id --sprawdza liczbe pytan do istniejacego pytania
-
-
-
 
 if (@answer_count < 3)
 	begin
@@ -148,10 +133,10 @@ return -1
 
 go
 
-
 go
 
 --this procedure draws lots questions for player (they cannot be the same)
+
 create or alter procedure dbo.GetQuestionForPlayer
 @player_id int,
 @player_questions_quantity int -- number of questions that we want draw by lot
@@ -160,8 +145,6 @@ as
 declare @question_id int
 declare @random_record int
 declare @total_question_count int -- current number of questions in database
-
-
 
 select @total_question_count = count(question_id) from Questions 
 
@@ -182,7 +165,7 @@ end
 
 go
 
---adds one point for player who answered correctly 
+--this trigger adds one point for player who answered correctly 
 
 
 CREATE or alter TRIGGER AddScore  
@@ -199,8 +182,6 @@ select @player_answer = answer_id from inserted
 declare @correct_answer as int
 select @correct_answer = answer_id from Possible_Answers where correct_answer = 1
 
-
-
 begin
 if (@player_answer = @correct_answer)
 begin
@@ -210,8 +191,6 @@ begin
 end
 
 end
-
-
 
 ----exemplary using of procedures
 
@@ -230,6 +209,3 @@ end
  
 --insert into Player_Answers values (1,1,1)
 --select*from Player
-
-
-
