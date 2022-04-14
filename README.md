@@ -3,7 +3,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Screenshots](#screnshot)
+* [Screenshots](#screenshots)
 
 ## General info
 This project is simple relational database from scratch. Executing this query will create a database that can be used for a quiz application. It contains creating tables, stored procedures and one exemplary trigger. By executing procedures it adds possible question with answers or draws them to players.
