@@ -14,3 +14,6 @@ Project is created with:
 	
 ## Setup
 To run this project, open it in MSSQL and execute whole query from the begining. It has already usage of exemplary procedures/triggers so just uncomment them in the bottom of query to execute.
+
+## Screenshots
+![ScreenOfDatabase](https://user-images.githubusercontent.com/74752413/163390660-a7eb351f-f10b-46ff-b29f-368ebbb7c519.PNG)
